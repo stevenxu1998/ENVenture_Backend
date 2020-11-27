@@ -10,7 +10,7 @@ public interface AdminService {
     public Admin createAdmin (Admin admin);
     public List<Admin> getAdmins();
     public Admin getAdmin(Long id);
-    public void updateAdmin(Long id);
+    public void updateAdmin(Long id, Admin admin);
     public void deleteAdmin(Long id);
 
     List<Admin> getAdminsByName(String firstName, String lastName);

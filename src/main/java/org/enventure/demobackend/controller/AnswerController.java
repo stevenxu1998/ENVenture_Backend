@@ -2,6 +2,7 @@ package org.enventure.demobackend.controller;
 
 import org.enventure.demobackend.domain.Answer;
 import org.enventure.demobackend.domain.Question;
+import org.enventure.demobackend.repository.AnswerRepository;
 import org.enventure.demobackend.service.AnswerService;
 import org.enventure.demobackend.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ public class AnswerController {
 
     @Autowired
     private AnswerService answerService;
+    private AnswerRepository answerRepository;
 
     @GetMapping
     public List<Answer> getAllQuestions(){
@@ -33,6 +35,11 @@ public class AnswerController {
     }
 
     //update
+    @RequestMapping(value = "/answers/{id}", method = RequestMethod.PUT)
+    public void updateAnswer(@PathVariable Long id){
+        Answer newAnswer = answerRepository.findById(id).get();
+        answerService.updateAnswer(id, newAnswer);
+    }
 
     @DeleteMapping("/{id}")
     public void deleteAnswer (@PathVariable("id") Long id){

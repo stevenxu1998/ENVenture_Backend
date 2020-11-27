@@ -12,7 +12,7 @@ public interface TeacherService {
     public Teacher createTeacher(Teacher teacher);
     public List<Teacher> getTeachers();
     public Teacher getTeacher(Long id);
-    public void updateTeacher(Long id);
+    public void updateTeacher(Long id, Teacher teacher);
     public void deleteTeacher(Long id);
 
     List<Teacher> getTeachersByName(String firstName, String lastName);

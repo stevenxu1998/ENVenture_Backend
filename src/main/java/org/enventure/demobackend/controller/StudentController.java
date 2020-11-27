@@ -1,7 +1,9 @@
 package org.enventure.demobackend.controller;
 
+import org.enventure.demobackend.domain.Quiz;
 import org.enventure.demobackend.domain.Student;
 import org.enventure.demobackend.exception.MyResourceNotFoundException;
+import org.enventure.demobackend.repository.StudentRepository;
 import org.enventure.demobackend.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,6 +23,7 @@ import java.util.Optional;
 public class StudentController {
     @Autowired
     private StudentService studentService;
+    private StudentRepository studentRepository;
 
     @PostMapping
     public ResponseEntity<Student> createStudent(@RequestBody Student student){
@@ -38,6 +41,12 @@ public class StudentController {
     @DeleteMapping("/{id}")//id is a path variable
     public void deleteStudent(@PathVariable("id") long id){
         studentService.deleteStudent(id);
+    }
+
+    @RequestMapping(value = "/students/{id}", method = RequestMethod.PUT)
+    public void updateQuiz(@PathVariable Long id){
+        Student newStudent = studentRepository.findById(id).get();
+        studentService.updateStudent(id, newStudent);
     }
 
     @GetMapping(value="/name", params={"firstName", "lastName"})//request parameters, get the difference between them

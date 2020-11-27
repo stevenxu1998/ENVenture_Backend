@@ -29,9 +29,13 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public void updateQuestion(Long id) {
+    public void updateQuestion(Long id, Question question) {
 
         // Steve to update
+        Question newQuestion = questionRepository.findById(id).get();
+        newQuestion.setAnswerList(newQuestion.getAnswerList());
+        newQuestion.setQn(newQuestion.getQn());
+        questionRepository.save(newQuestion);
     }
 
     @Override

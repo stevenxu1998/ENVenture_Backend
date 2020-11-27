@@ -28,8 +28,12 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public void updateTeacher (Long id){
-
+    public void updateTeacher (Long id, Teacher teacher){
+        Teacher newTeacher = teacherRepository.findById(id).get();
+        newTeacher.setEmail(newTeacher.getEmail());
+        newTeacher.setFirstName(newTeacher.getFirstName());
+        newTeacher.setLastName(newTeacher.getLastName());
+        teacherRepository.save(newTeacher);
     }
 
     @Override

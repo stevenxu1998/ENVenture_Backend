@@ -8,7 +8,7 @@ public interface QuestionService {
     public Question createQuestion(Question question);
     public List<Question>getQuestions();
     public Question getQuestion(Long id);
-    public void updateQuestion(Long id);
+    public void updateQuestion(Long id, Question question);
     public void deleteQuestion(Long id);
 
 }

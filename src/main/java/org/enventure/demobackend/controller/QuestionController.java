@@ -1,6 +1,9 @@
 package org.enventure.demobackend.controller;
 
 import org.enventure.demobackend.domain.Question;
+import org.enventure.demobackend.domain.Student;
+import org.enventure.demobackend.repository.CourseRepository;
+import org.enventure.demobackend.repository.QuestionRepository;
 import org.enventure.demobackend.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +15,7 @@ import java.util.List;
 public class QuestionController {
     @Autowired
     private QuestionService questionService;
+    private QuestionRepository questionRepository;
 
     @GetMapping
     public List<Question> getAllQuestions(){
@@ -36,6 +40,11 @@ public class QuestionController {
     }
 
     // update
+    @RequestMapping(value = "/questions/{id}", method = RequestMethod.PUT)
+    public void updateStudent (@PathVariable Long id){
+        Question newQuestion = questionRepository.findById(id).get();
+        questionService.updateQuestion(id, newQuestion);
+    }
 
     // postMultiple
 
