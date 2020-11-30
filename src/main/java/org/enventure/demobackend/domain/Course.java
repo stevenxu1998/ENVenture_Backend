@@ -2,6 +2,7 @@ package org.enventure.demobackend.domain;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Course {
@@ -10,9 +11,9 @@ public class Course {
     private Long id;
     private String name;
     private int studentCount;
+    //private List<String> announcements;
     @OneToMany(fetch = FetchType.EAGER)
-    private List<Unit> Unit;
-    private List<String> announcements;
+    private Set<Unit> Unit;
 
     public Course() {
     }
@@ -41,13 +42,13 @@ public class Course {
 
     public void setStudentCount(int studentCount){this.studentCount = studentCount;}
 
-    public List<Unit> getUnit(){return Unit;}
+    public Set<Unit> getUnit(){return Unit;}
 
-    public void setUnit(List<Unit> Unit){this.Unit = Unit;}
+    public void setUnit(Set<Unit> Unit){this.Unit = Unit;}
 
-    public List<String> getAnnouncements(){return announcements;}
-
-    public void setAnnouncements(List<String> announcements){this.announcements = announcements;}
+//    public List<String> getAnnouncements(){return announcements;}
+//
+//    public void setAnnouncements(List<String> announcements){this.announcements = announcements;}
 
     @Override
     public String toString() {
@@ -56,7 +57,6 @@ public class Course {
                 ", name='" + name +
                 ", studentCount ='"+ studentCount +
                 ", Unit = '"+ Unit +
-                ", announcements = '" + announcements +
                 '}';
     }
 }

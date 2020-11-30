@@ -24,10 +24,10 @@ public class CourseController {
         return new ResponseEntity<Course>(new Course("Java Programming by Smith"), HttpStatus.OK);
     }
 
-    @GetMapping
-    public List<Course> getAllCourses(){
-        return courseService.getCourses();
-    }
+//    @GetMapping
+//    public List<Course> getAllCourses(){
+//        return courseService.getCourses();
+//    }
 
     @GetMapping("/{id}")
     public Course getCourse(@PathVariable Long id){

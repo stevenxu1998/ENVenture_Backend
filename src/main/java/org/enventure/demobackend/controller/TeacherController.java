@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/teachers")
 public class TeacherController {
@@ -25,11 +27,16 @@ public class TeacherController {
         return new ResponseEntity<>(teach, httpHeaders, HttpStatus.CREATED);
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<Teacher>> getTeachers(){
+        return new ResponseEntity<>(teacherService.getTeachers(), HttpStatus.FOUND);
+    }
+
     @DeleteMapping("/{id}")
     private void deleteTeacher(@PathVariable("id") Long id){ teacherService.deleteTeacher(id);}
 
     @RequestMapping(value = "/teachers/{id}", method = RequestMethod.PUT)
-    public void updateQuiz(@PathVariable Long id){
+    public void updateTeacher(@PathVariable Long id){
         Teacher newTeacher = teacherRepository.findById(id).get();
         teacherService.updateTeacher(id, newTeacher);
     }

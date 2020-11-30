@@ -44,7 +44,7 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/students/{id}", method = RequestMethod.PUT)
-    public void updateQuiz(@PathVariable Long id){
+    public void updateStudent(@PathVariable Long id){
         Student newStudent = studentRepository.findById(id).get();
         studentService.updateStudent(id, newStudent);
     }

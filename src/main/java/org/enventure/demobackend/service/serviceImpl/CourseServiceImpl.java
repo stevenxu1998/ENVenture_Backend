@@ -29,7 +29,7 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public void updateCourse (Long id, Course course){
         Course newCourse = courseRepository.findById(id).get();
-        newCourse.setAnnouncements(newCourse.getAnnouncements());
+        //newCourse.setAnnouncements(newCourse.getAnnouncements());
         newCourse.setName(newCourse.getName());
         newCourse.setStudentCount(newCourse.getStudentCount());
         courseRepository.save(newCourse);

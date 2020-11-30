@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Question implements Serializable {
@@ -16,12 +17,15 @@ public class Question implements Serializable {
 
     @OneToMany (mappedBy = "question", fetch = FetchType.EAGER)
     //joinTble(joinColumns = {joincolumn="", @inverseJoinColumn=""})
-    private List<Answer> answerList;
+    private Set<Answer> answerList;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Quiz quiz;
 
     public Question() {
     }
 
-    public Question(String sentence, List<Answer> answerList) {
+    public Question(String sentence, Set<Answer> answerList) {
         this.qn = sentence;
         this.answerList = answerList;
     }
@@ -34,13 +38,17 @@ public class Question implements Serializable {
         this.qn = sentence;
     }
 
-    public List<Answer> getAnswerList() {
+    public Set<Answer> getAnswerList() {
         return answerList;
     }
 
-    public void setAnswerList(List<Answer> answerList) {
+    public void setAnswerList(Set<Answer> answerList) {
         this.answerList = answerList;
     }
+
+    public Quiz getQuiz(){ return quiz;}
+
+    public void setQuiz(Quiz quiz){this.quiz = quiz;}
 
     @Override
     public String toString() {

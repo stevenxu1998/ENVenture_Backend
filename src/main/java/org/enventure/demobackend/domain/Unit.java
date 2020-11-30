@@ -2,33 +2,43 @@ package org.enventure.demobackend.domain;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Unit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private List<String> section;
-    @OneToMany( fetch = FetchType.EAGER)
+//    @ElementCollection
+//    @Column(name = "Sections")
+//    private List<String> sections;
+    //private List<String> fileNames;
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Quiz> quizList;
-    private List<String> fileNames;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Course course;
 
     public Unit(){
 
     }
-    public Unit(List<String> section, List<Quiz> quizList, List<String> fileNames){
-        this.section = section;
+    public Unit(List<String> sections, List<Quiz> quizList, List<String> fileNames, Course course){
+        //this.sections = sections;
         this.quizList = quizList;
-        this.fileNames = fileNames;
+        //this.fileNames = fileNames;
+        this.course = course;
     }
 
-    public List<String> getSection(){
-        return section;
-    }
+//    public List<String> getSection(){
+//        return sections;
+//    }
+//
+//     public void setSection(List<String> sections){
+//        this.sections = sections;
+//     }
 
-     public void setSection(List<String> section){
-        this.section = section;
-     }
+     public Course getCourse(){return course;}
+
+     public void setCourse(Course course){this.course = course;}
 
      public List<Quiz> getQuizList (){
         return quizList;
@@ -38,21 +48,19 @@ public class Unit {
         this.quizList = quizList;
      }
 
-     public List<String> getFileNames (){
-        return fileNames;
-     }
-
-     public void setFileNames (List<String> fileNames){
-        this.fileNames = fileNames;
-     }
+//     public List<String> getFileNames (){
+//        return fileNames;
+//     }
+//
+//     public void setFileNames (List<String> fileNames){
+//        this.fileNames = fileNames;
+//     }
 
      @Override
      public String toString (){
         return "Unit{" +
                 "id" + id +
-                ", Sections" + section +
                 ", quizList = '" + quizList +
-                ", fileNames = '" + fileNames +
                 '}';
      }
 }

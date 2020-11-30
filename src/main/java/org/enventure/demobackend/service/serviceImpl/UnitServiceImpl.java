@@ -29,9 +29,9 @@ public class UnitServiceImpl implements UnitService {
     @Override
     public void updateUnit (Long id, Unit unit){
         Unit newUnit = unitRepository.findById(id).get();
-        newUnit.setFileNames(newUnit.getFileNames());
+        //newUnit.setFileNames(newUnit.getFileNames());
         newUnit.setQuizList(newUnit.getQuizList());
-        newUnit.setSection(newUnit.getSection());
+        //newUnit.setSection(newUnit.getSection());
         unitRepository.save(newUnit);
     }
 

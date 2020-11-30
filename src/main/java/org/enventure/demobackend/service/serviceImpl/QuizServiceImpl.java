@@ -29,7 +29,7 @@ public class QuizServiceImpl implements QuizService {
     @Override
     public void updateQuiz (Long id, Quiz quiz){
         Quiz newQuiz = quizRepository.findById(id).get();
-        newQuiz.setCorrectAnswerList(newQuiz.getCorrectAnswerList());
+        //newQuiz.setCorrectAnswerList(newQuiz.getCorrectAnswerList());
         newQuiz.setMark(newQuiz.getMark());
         newQuiz.setQuestionList(newQuiz.getQuestionList());
         quizRepository.save(newQuiz);

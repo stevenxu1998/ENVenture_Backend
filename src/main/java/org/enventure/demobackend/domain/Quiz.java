@@ -1,5 +1,7 @@
 package org.enventure.demobackend.domain;
 
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,15 +13,17 @@ public class Quiz {
     private Long mark;
     @OneToMany(fetch = FetchType.EAGER)
     private List<Question> questionList;
-    private List<Answer> correctAnswerList;
+    //private List<Answer> correctAnswerList;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Unit unit;
 
     public Quiz(){
 
     }
 
-    public Quiz(List<Question> questionList, List<Answer> correctAnswerList, Long mark){
+    public Quiz(List<Question> questionList, Long mark){
         this.questionList = questionList;
-        this.correctAnswerList = correctAnswerList;
+        //this.correctAnswerList = correctAnswerList;
         this.mark = mark;
     }
 
@@ -31,13 +35,16 @@ public class Quiz {
         this.questionList = questionList;
     }
 
-    public List<Answer> getCorrectAnswerList(){
-        return correctAnswerList;
-    }
+//    public List<Answer> getCorrectAnswerList(){
+//        return correctAnswerList;
+//    }
 
-    public void setCorrectAnswerList(List<Answer> correctAnswerList){
-        this.correctAnswerList = correctAnswerList;
-    }
+//    public void setCorrectAnswerList(List<Answer> correctAnswerList){
+//        this.correctAnswerList = correctAnswerList;
+//    }
+    public Unit getUnit(){return unit;}
+
+    public void setUnit(Unit unit){this.unit = unit;}
 
     public Long getMark(){
         return mark;
@@ -52,7 +59,6 @@ public class Quiz {
         return "Quiz{" +
                 "id" + id +
                 ", questionList='" + questionList +
-                ", correctAnswerList = '" + correctAnswerList +
                 '}';
     }
 }

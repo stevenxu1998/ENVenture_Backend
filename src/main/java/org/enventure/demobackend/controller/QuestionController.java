@@ -35,13 +35,13 @@ public class QuestionController {
 
     // delete
     @DeleteMapping("/{id}")//id is a path variable
-    public void deleteStudent(@PathVariable("id") long id){
+    public void deleteQuestion(@PathVariable("id") long id){
         questionService.deleteQuestion(id);
     }
 
     // update
     @RequestMapping(value = "/questions/{id}", method = RequestMethod.PUT)
-    public void updateStudent (@PathVariable Long id){
+    public void updateQuestion (@PathVariable Long id){
         Question newQuestion = questionRepository.findById(id).get();
         questionService.updateQuestion(id, newQuestion);
     }
