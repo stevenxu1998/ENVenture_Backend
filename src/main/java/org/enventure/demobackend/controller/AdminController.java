@@ -1,6 +1,7 @@
 package org.enventure.demobackend.controller;
 
 import org.enventure.demobackend.domain.Admin;
+import org.enventure.demobackend.domain.Quiz;
 import org.enventure.demobackend.repository.AdminRepository;
 import org.enventure.demobackend.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Admins")
+@CrossOrigin(origins = "http://localhost:9000")
 public class AdminController {
     @Autowired
     private AdminService adminService;
@@ -29,6 +31,11 @@ public class AdminController {
     @GetMapping("/all")
     public ResponseEntity<List<Admin>> getAdmins(){
         return new ResponseEntity<>(adminService.getAdmins(), HttpStatus.FOUND);
+    }
+
+    @GetMapping("/{id}")
+    public Admin getAdmin (@PathVariable Long id){
+        return adminService.getAdmin(id);
     }
 
     @DeleteMapping("/{id}")

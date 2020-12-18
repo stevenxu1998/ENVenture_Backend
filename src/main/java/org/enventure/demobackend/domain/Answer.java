@@ -1,5 +1,7 @@
 package org.enventure.demobackend.domain;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import javax.persistence.*;
 
 @Entity
@@ -34,7 +36,8 @@ public class Answer {
     public String toString() {
         return "Answer{" +
                 "id= '" + id +
-                ", question= '" + question +
+//                ", question= '" + question +
+                ", answer='"+ ans+
                 '}';
     }
 }

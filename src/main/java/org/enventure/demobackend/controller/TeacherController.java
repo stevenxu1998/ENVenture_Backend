@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/teachers")
+@CrossOrigin(origins = "http://localhost:9000")
 public class TeacherController {
     @Autowired
     private TeacherService teacherService;
@@ -30,6 +31,11 @@ public class TeacherController {
     @GetMapping("/all")
     public ResponseEntity<List<Teacher>> getTeachers(){
         return new ResponseEntity<>(teacherService.getTeachers(), HttpStatus.FOUND);
+    }
+
+    @GetMapping("/{id}")
+    public Teacher getTeacher (@PathVariable Long id){
+        return teacherService.getTeacher(id);
     }
 
     @DeleteMapping("/{id}")

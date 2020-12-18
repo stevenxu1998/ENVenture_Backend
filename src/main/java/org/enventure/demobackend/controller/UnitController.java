@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/Units")
+@CrossOrigin(origins = "http://localhost:9000")
 public class UnitController {
     @Autowired
     private UnitService unitService;

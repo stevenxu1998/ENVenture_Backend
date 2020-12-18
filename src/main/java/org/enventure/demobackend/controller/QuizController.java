@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/quizzes")
+@CrossOrigin(origins = "http://localhost:9000")
 public class QuizController {
 
     @Autowired

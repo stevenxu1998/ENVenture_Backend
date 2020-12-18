@@ -20,6 +20,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/students")
+@CrossOrigin(origins = "http://localhost:9000")
 public class StudentController {
     @Autowired
     private StudentService studentService;
@@ -38,6 +39,12 @@ public class StudentController {
     public ResponseEntity<List<Student>> getStudents(){
         return new ResponseEntity<>(studentService.getStudents(), HttpStatus.FOUND);
     }
+
+    @GetMapping("/{id}")
+    public Student getStudent (@PathVariable Long id){
+        return studentService.getStudent(id);
+    }
+
     @DeleteMapping("/{id}")//id is a path variable
     public void deleteStudent(@PathVariable("id") long id){
         studentService.deleteStudent(id);

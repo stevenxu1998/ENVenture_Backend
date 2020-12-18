@@ -1,5 +1,7 @@
 package org.enventure.demobackend.domain;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -11,6 +13,7 @@ public class Course {
     private Long id;
     private String name;
     private int studentCount;
+    private int numberOfUnits;
     //private List<String> announcements;
     @OneToMany(fetch = FetchType.EAGER)
     private Set<Unit> Unit;
@@ -46,6 +49,10 @@ public class Course {
 
     public void setUnit(Set<Unit> Unit){this.Unit = Unit;}
 
+    public int getNumberOfUnits(){return numberOfUnits;}
+
+    public void setNumberOfUnits(int numberOfUnits){this.numberOfUnits = numberOfUnits;}
+
 //    public List<String> getAnnouncements(){return announcements;}
 //
 //    public void setAnnouncements(List<String> announcements){this.announcements = announcements;}
@@ -56,6 +63,7 @@ public class Course {
                 "id=" + id +
                 ", name='" + name +
                 ", studentCount ='"+ studentCount +
+                ", unitCount = '" + numberOfUnits +
                 ", Unit = '"+ Unit +
                 '}';
     }

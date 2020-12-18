@@ -1,5 +1,7 @@
 package org.enventure.demobackend.domain;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -9,6 +11,7 @@ public class Unit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
 //    @ElementCollection
 //    @Column(name = "Sections")
 //    private List<String> sections;
@@ -48,6 +51,10 @@ public class Unit {
         this.quizList = quizList;
      }
 
+     public String getName(){return name;}
+
+     public void setName(String name){this.name = name;}
+
 //     public List<String> getFileNames (){
 //        return fileNames;
 //     }
@@ -60,6 +67,7 @@ public class Unit {
      public String toString (){
         return "Unit{" +
                 "id" + id +
+                ", name = '" + name +
                 ", quizList = '" + quizList +
                 '}';
      }

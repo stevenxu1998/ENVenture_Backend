@@ -6,6 +6,7 @@ import org.enventure.demobackend.repository.AdminRepository;
 import org.enventure.demobackend.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 @Service

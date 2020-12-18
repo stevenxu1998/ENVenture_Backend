@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/courses")
+@CrossOrigin(origins = "http://localhost:9000/")
 public class CourseController {
     @Autowired
     private CourseService courseService;
@@ -24,10 +25,10 @@ public class CourseController {
         return new ResponseEntity<Course>(new Course("Java Programming by Smith"), HttpStatus.OK);
     }
 
-//    @GetMapping
-//    public List<Course> getAllCourses(){
-//        return courseService.getCourses();
-//    }
+    @GetMapping("/all")
+    public List<Course> getAllCourses(){
+        return courseService.getCourses();
+    }
 
     @GetMapping("/{id}")
     public Course getCourse(@PathVariable Long id){

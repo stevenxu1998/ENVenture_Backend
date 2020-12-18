@@ -1,6 +1,7 @@
 package org.enventure.demobackend.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -55,7 +56,7 @@ public class Question implements Serializable {
         return "Question{" +
                 "id=" + id +
                 ", sentence='" + qn + '\'' +
-                ", answerList= '" + answerList +
+//                ", answerList= '" + answerList +
                 '}';
     }
 }
